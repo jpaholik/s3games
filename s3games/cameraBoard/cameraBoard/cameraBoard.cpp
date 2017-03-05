@@ -1,5 +1,7 @@
 #ifdef WIN32
 #include <windows.h>
+#else
+#include <sys/time.h>
 #endif
 
 #include <opencv2/core/core.hpp>
@@ -27,6 +29,13 @@ double usec()
 	QueryPerformanceCounter(&tick);
 	double ticks_per_micro= (double)ticksPerSecond.QuadPart/1000000.0;
 	return (double)(tick.QuadPart / ticks_per_micro);
+}
+#else
+double usec()
+{
+	struct timeval tv;
+	gettimeofday(&tv,NULL);
+	return 1000000L * tv.tv_sec + tv.tv_usec;
 }
 #endif
 
@@ -85,7 +94,11 @@ public:
 	char *toString()
 	{
 		static char str[200];
+#ifdef WIN32
 		sprintf_s(str, 199, "Hue: %d - %d, Sat: %.2f - %.2f, Val: %.2f - %.2f Siz: %d - %d\n", f2i(hueMin), f2i(hueMax), satMin, satMax, valueMin / 255.0, valueMax / 255.0, sizeMin, sizeMax);
+#else
+		sprintf(str, "Hue: %d - %d, Sat: %.2f - %.2f, Val: %.2f - %.2f Siz: %d - %d\n", f2i(hueMin), f2i(hueMax), satMin, satMax, valueMin / 255.0, valueMax / 255.0, sizeMin, sizeMax);
+#endif
 		return str;
 	}
 
@@ -414,7 +427,11 @@ void readObjectDescriptions()
 		cin.getline(objName, 200);
 		int nameSize = strlen(objName) + 1;
 		name = new char[nameSize];
+#ifdef WIN32
 		strncpy_s(name, nameSize, objName, nameSize);
+#else
+		strncpy(name, objName, nameSize);
+#endif
 		double hueMin, hueMax, satMin, satMax, valueMin, valueMax;
 		long sizeMin, sizeMax;
 		int state;
@@ -490,7 +507,7 @@ int main( int argc, char** argv )
 	cout << "S:S3 Games Camera" << endl;
 	cout.flush();
 
-    VideoCapture *cap = new VideoCapture(0);
+    	VideoCapture *cap = new VideoCapture(1);
 	Mat image;
 
 	bool show = false;
@@ -509,7 +526,7 @@ int main( int argc, char** argv )
 		return 0;
 	}
 
-	char *camera = "View from Camera";
+	const char *camera = "View from Camera";
 	namedWindow( camera, CV_WINDOW_AUTOSIZE );
 	
 	int mouseData[3];
