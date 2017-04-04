@@ -5,6 +5,7 @@ import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort; 
 
 import java.io.*;
+import java.util.Enumeration;
 
 /** RobotSerialPort class is responsible for communicating with the SSC-32
  * robot controller over the serial line. It utilizes the RXTX library */
@@ -27,6 +28,10 @@ public class RobotSerialPort
     /** open the communication link with the SSC-32 controller */
     public void open() throws Exception 
     {
+        Enumeration e = CommPortIdentifier.getPortIdentifiers();
+        while(e.hasMoreElements()) {
+            System.out.println("e: "+ e.nextElement());
+        }
         CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(port);
         if (portIdentifier.isCurrentlyOwned())
             throw new Exception("RobotSerialPort: " + port + " is currently in use");

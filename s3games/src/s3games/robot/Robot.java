@@ -100,8 +100,15 @@ public class Robot implements Runnable
     private void goTo(String locationName, boolean grab) throws Exception
     {
         double[] angles = specs.locations.get(locationName).robot.angles;
+        double[] coordinates = specs.locations.get(locationName).robot.coordinates;
+        
         double[] place1 = Arrays.copyOfRange(angles, 0, 5);
         double[] place2 = Arrays.copyOfRange(angles, 5, 10);
+        
+        System.out.println("Angles upper pos: " + Arrays.toString(place1));
+        System.out.println("Angles bottom pos: " + Arrays.toString(place2));
+        System.out.println("Coordinates: " + Arrays.toString(coordinates));
+        
         goTo(place1);
         Thread.sleep(700);
         currentLocation = place2;

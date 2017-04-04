@@ -53,11 +53,13 @@ public class RobotControlWindow extends JFrame implements Runnable
         position = new double[5];
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                key = evt.getKeyChar();                
+                key = evt.getKeyChar();   
+                //System.out.println("listener: " + key);
                 if (key == 'Q') terminate = true;
             }
         });
         setVisible(true);
+        setFocusable(true);
         setSize(400,200);
         key = ' ';
         new Thread(this).start();
@@ -70,12 +72,15 @@ public class RobotControlWindow extends JFrame implements Runnable
     {
         while(!terminate)
         {
+            
             if (key != ' ') 
             {
                 respondToKey();
                 key = ' ';
                 try { Thread.sleep(250); } catch (Exception e) {}
             }
+            
+            try { Thread.sleep(250); } catch (Exception e) {}
         }        
         dispose();          
     }
@@ -88,8 +93,9 @@ public class RobotControlWindow extends JFrame implements Runnable
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         g.setColor(Color.magenta);
         StringBuilder s = new StringBuilder();
-        for (int i = 0; i < 5; i++)
-            s.append(' ').append(position[i]);
-        g.drawString("Angles: " + s.toString(), 10, 80);
+        if (position != null)
+            for (int i = 0; i < 5; i++)
+                s.append(' ').append(position[i]);
+        g.drawString("Angles: " + s.toString(), 5, 5);
     }
 }

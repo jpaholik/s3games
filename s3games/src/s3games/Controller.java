@@ -192,7 +192,7 @@ public class Controller implements SwitchListener, Runnable
                     if (playerTypes[player] == Player.playerType.COMPUTER)
                         robotNeeded = true;
                 try {
-                    if (robotNeeded) robot = new Robot("COM3", gameSpecification);
+                    if (robotNeeded) robot = new Robot("/dev/ttyUSB0", gameSpecification);
                 } catch (Exception e) { gw.showException(e); }
             }
                         
@@ -266,7 +266,7 @@ public class Controller implements SwitchListener, Runnable
     public void controlRobot() 
     {
         try {
-            robot = new Robot("COM3", null);
+            robot = new Robot("/dev/ttyUSB0", null);
             RobotControlWindow rcw = new RobotControlWindow(robot);        
         } catch (Exception e) {}
     }

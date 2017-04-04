@@ -68,7 +68,7 @@ public class Camera implements Runnable
     final Object notificator;
 
     /** the name of the C++ application to be started */
-    private static final String CAMERA_PROGRAM = "cameraBoard.exe";
+    private static final String CAMERA_PROGRAM = "/home/krtek/bakalarka/source/s3games/s3games/cameraBoard.exe";
     
     /** construct a new camera controller, it will also construct a camera control window. */
     public Camera(GameSpecification specs)
