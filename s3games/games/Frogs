@@ -4,19 +4,19 @@ image=frogsbackground.png
 [REALBOARD ELEMENT TYPES]
 name=greenFrog
 state=1
-hueMin=71
-hueMax=192
-saturationMin=0.27
+hueMin=110
+hueMax=170
+saturationMin=0.45
 saturationMax=1.0
-valueMin=0.09
-valueMax=0.9
+valueMin=0.30
+valueMax=1.0
 sizeMin=200
 sizeMax=5000
 
 name=redFrog
-hueMin=337
-hueMax=19
-saturationMin=0.44
+hueMin=210
+hueMax=260
+saturationMin=0.45
 saturationMax=1.0
 valueMin=0.28
 valueMax=1.0
@@ -131,6 +131,30 @@ StoneOccupied($POS)
   NOT EMPTY("s($POS)")
 END
 
+MoveAvailable($TO)
+	$TO > 0
+	$TO <= 7
+	EMPTY("s($TO)")
+END
+
+GetPossibleMovesGreenFrog($POS)
+	$POSSIBLEMOVES = {}	
+	$STEPPOS = ($POS + 1)
+	$JUMPPOS = ($POS + 2)
+	IF(StoneOccupied($POS+1) AND MoveAvailable($JUMPPOS), $POSSIBLEMOVES = $POSSIBLEMOVES UNION {"s($JUMPPOS)"}, true)
+	IF(MoveAvailable($STEPPOS), $POSSIBLEMOVES = $POSSIBLEMOVES UNION {"s($STEPPOS)"}, true)
+	$POSSIBLEMOVES
+END
+
+GetPossibleMovesRedFrog($POS)
+	$POSSIBLEMOVES = {}	
+	$STEPPOS = ($POS - 1)
+	$JUMPPOS = ($POS - 2)
+	IF(StoneOccupied($POS-1) AND MoveAvailable($JUMPPOS), $POSSIBLEMOVES = $POSSIBLEMOVES UNION {"s($JUMPPOS)"}, true)
+	IF(MoveAvailable($STEPPOS), $POSSIBLEMOVES = $POSSIBLEMOVES UNION {"s($STEPPOS)"}, true)
+	$POSSIBLEMOVES
+END
+
 [SCORINGS]
 
 [END OF GAME]
@@ -139,26 +163,16 @@ winner=1
 
 [GAME RULES]
 
-name=greenStep
+name=greenFrogMove
 element=gf($J)
 from=s($K)
 to=s($L)
-condition=$L==$K+1
+toLocations=GetPossibleMovesGreenFrog($K)
+condition=true
 
-name=greenJump
-element=gf($J)
-from=s($K)
-to=s($L)
-condition=StoneOccupied($K+1) AND ($L==$K+2)
-
-name=redStep
+name=redFrogMove
 element=rf($J)
 from=s($K)
 to=s($L)
-condition=$L==$K-1
-
-name=redJump
-element=rf($J)
-from=s($K)
-to=s($L)
-condition=StoneOccupied($K-1) AND ($L==$K-2)
+toLocations=GetPossibleMovesRedFrog($K)
+condition=true

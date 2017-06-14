@@ -41,7 +41,7 @@ public class DepthFirstSearchPlayer extends Player
     @Override
     public Move move(GameState state, ArrayList<Move> allowedMoves) throws Exception 
     {
-        try { Thread.sleep(1000); } catch (Exception e) {};
+        try { /*Thread.sleep(1000);*/ } catch (Exception e) {};
         open = new ArrayList<Node>();
         visited = new HashSet<GameState>();
         visited.addAll(history);

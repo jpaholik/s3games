@@ -68,6 +68,19 @@ class SetLexeme extends Lexeme
     }
 }
 
+/** represents a lazy set lexeme {a,b,...,z}, which is used in "toLocations" attribute; duplicity is allowed */
+class LazySetLexeme extends Lexeme
+{
+    /** list of lexemes that form the set */
+    ArrayList<Lexeme> elems;
+    
+    /** construct the set lexeme */
+    LazySetLexeme(ArrayList<Lexeme> elements)
+    {
+        elems = elements;
+    }
+}
+
 /** represents a word lexeme - i.e. any string that was not recognized as anything else */
 class WordLexeme extends Lexeme
 {

@@ -213,14 +213,19 @@ public class GameState
                 ArrayList<Move> moreMoves = rule.getMatchingMoves(element, context.specs, context);
                 if (moreMoves != null) moves.addAll(moreMoves);
             }
-        return moves;
+            return moves;
     }
 
     /** return a list of moves that can be taken from this states - this includes only DIFFERENT moves, i.e. those leading to not equal() states */
     public HashSet<Move> possibleMoves() throws Exception
     {
+        Date getMovesStartTime = new Date();
         HashSet<Move> moves = new HashSet<Move>();
         moves.addAll(allPossibleMoves());
+        Date getMovesEndTime = new Date();
+        long duration = (getMovesEndTime.getTime() - getMovesStartTime.getTime());
+        
+        //System.out.println("Duration of getting all possible moves: "+ duration + "milisec");
         return moves;
     }
     
@@ -265,7 +270,13 @@ public class GameState
         if (bestRule==null) throw new Exception("Trying to perform a move that is not legal in this state " + move);
         bestRule.addScores(context);
         moveElement(move, context.specs);
-        bestRule.performAction(context);
+        
+        if(move.action != null) {
+            move.action.eval(context);
+        }
+        else {
+            bestRule.performAction(context);
+        }
         updateScores(context);
         winner = gameOver();
         modified = true;

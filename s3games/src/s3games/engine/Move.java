@@ -1,14 +1,17 @@
 package s3games.engine;
+import s3games.engine.expr.Expr;
 
 /** Represents a single move made by some player: what was moved, from where, to where */
 public class Move
 {
     /** name of the element that was moved */
-    public final String from;
+    public final String element; 
     /** name of the location from where the element was moved  */
-    public final String to;
+    public final String from;
     /** name of the location to where the element was moved */
-    public final String element;  
+    public final String to; 
+    /** action expression to evaluate, after the move was performed */
+    public Expr action;
     
     /** remembers the hashstring of this move so that it does not need to be reconstructed */
     private final String hashString;
@@ -20,6 +23,16 @@ public class Move
         this.from = from;
         this.to = to;
         this.element = element;        
+        hashString = computeHashString(specs);
+        hash = hashString.hashCode();
+    }
+    
+    public Move(String from, String to, String element, GameSpecification specs, Expr action)
+    {
+        this.from = from;
+        this.to = to;
+        this.element = element;      
+        this.action = action;
         hashString = computeHashString(specs);
         hash = hashString.hashCode();
     }

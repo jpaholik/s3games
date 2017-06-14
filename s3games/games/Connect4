@@ -652,6 +652,6 @@ name=rstep
 element=r($J)
 player=2
 from=sr($K)
-to=b($L,$M)  
+to=b($L,$M) 
 condition=CheckMove
 followup=NEXTPLAYER

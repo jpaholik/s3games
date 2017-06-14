@@ -133,6 +133,13 @@ public abstract class Expr
     {
         return false;
     }
+    
+    /** stub to be overriden by expressions that are of boolean type, otherwise returns false
+     * note: here we do not use closed-world assumption: anything else than false is not false! */
+    public ArrayList<Expr> getSet() throws Exception
+    {
+        throw new Exception("expected set expression, but it's " + this + " here");
+    }
         
     /** stub to be overriden by expressions that are of string type - it should 
      * set the variables in the context, if the expression contains variable references */
@@ -157,6 +164,11 @@ public abstract class Expr
     
     /** evaluates this expression and returns the resulting value */
     public abstract Expr eval(Context context) throws Exception;
+    
+    /** force evaluation of this expression, even of LazySet, and returns the resulting value */
+    public Expr forceEval(Context context) throws Exception {
+        return this.eval(context);
+    }
     
     /** compares if the values of this expression and the other expression are the same */
     public boolean equals(Expr other, Context context) throws Exception

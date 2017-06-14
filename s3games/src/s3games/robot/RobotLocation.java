@@ -134,7 +134,7 @@ public class RobotLocation
             - (90 - (angleAlpha + angleAlphaApostrophe)),
             - (90 - angleBeta),
             - (180 - (angleGamma + angleGammaApostrophe)),
-            0
+            85 // this can be changed
         };
         
         for(int i = 0; i < anglesToReturn.length; i++) {

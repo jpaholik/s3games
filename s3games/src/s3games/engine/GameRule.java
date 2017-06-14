@@ -21,6 +21,8 @@ public class GameRule
     public String name;
     /** element to move - expression that evaluates to string or a string with variable reference */
     public Expr element;
+    /** elementType to move - expression that evaluates to string or a string with variable reference */
+    public Expr elementType;
     /** state of the element - or an expression returning a number */
     public Expr state;
     /** expression evaluating to a number of the player that can make this move */
@@ -29,6 +31,8 @@ public class GameRule
     public Expr from;
     /** location to where the element can be moved - evaluates to string or a string with variable references */
     public Expr to;
+    /** locations to where the element can be moved - evaluates to ArrayList of strings or strings with variable references */
+    public Expr toLocations;
     /** an expression that must evaluate to true in order for this rule to be applicable */
     public Expr condition;
     /** a list of players for whom the score should be updated, if the rule was applied */
@@ -43,7 +47,7 @@ public class GameRule
     {
         this.name = name;
         scorePlayer = new ArrayList<Expr>();
-        scoreAmount = new ArrayList<Expr>();        
+        scoreAmount = new ArrayList<Expr>(); 
         condition = Expr.booleanExpr(true);
     }
 
@@ -56,7 +60,7 @@ public class GameRule
                 if ((currentPlayer == null) || (currentPlayer.matches(st.currentPlayer, context)))
                     if (from.matches(move.from, context))
                         if (to.matches(move.to, context))                    
-                            return condition.eval(context).isTrue();                    
+                            return condition.eval(context).isTrue();
         return false;
     }
         
@@ -72,11 +76,42 @@ public class GameRule
                 {
                     String tryFrom = st.elementLocations.get(el.name.fullName);
                     if (from.matches(tryFrom, context))
-                        for (Location tryTo:specs.locations.values())
-                            if (st.locationElements.get(tryTo.name.fullName) == null)
-                                if (to.matches(tryTo.name.fullName, context))
-                                    if (condition.eval(context).isTrue())
-                                        moves.add(new Move(tryFrom, tryTo.name.fullName, el.name.fullName, specs));
+                        if (toLocations != null) {
+                            Expr exp = toLocations.eval(context);
+                            
+                            // list of possible moves from tryFrom location
+                            ArrayList<Expr> expList = exp.getSet();
+                            
+                            if(!expList.isEmpty()) {
+                                for(Expr e: expList) {
+                                        String toPos;
+                                        
+                                        // try to get followup action for this move
+                                        try {
+                                            ArrayList<Expr> moveDetails = e.eval(context).getSet();
+                                            
+                                            // on zero position there should be name of TO place
+                                            toPos = moveDetails.get(0).eval(context).getStr();
+                                            // on first position there should be followup action
+                                            Expr action = moveDetails.get(1);
+                                            
+                                            moves.add(new Move(tryFrom, toPos, el.name.fullName, specs, action));
+                                        }
+                                        // if there is no followup action for this move
+                                        catch (Exception exc) {
+                                            toPos = e.eval(context).getStr();
+                                            moves.add(new Move(tryFrom, toPos, el.name.fullName, specs));
+                                        }
+                                }
+                            }
+                        }
+                        else {
+                            for (Location tryTo:specs.locations.values())
+                                if (st.locationElements.get(tryTo.name.fullName) == null)
+                                    if (to.matches(tryTo.name.fullName, context))
+                                        if (condition.eval(context).isTrue())
+                                            moves.add(new Move(tryFrom, tryTo.name.fullName, el.name.fullName, specs));
+                        }
                 }
         if (moves.size() > 0) return moves;
         return null;

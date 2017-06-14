@@ -176,7 +176,11 @@ public class GameWindow extends javax.swing.JFrame
                            
                             String fromLoc= egs.elementLocations.get(selectedElementName);
                  
-                            lastMove = new Move(fromLoc,entry.getKey(),selectedElementName, gs);
+                            Move performedMove = getPerformedMove(selectedElementName, entry.getKey());
+                            if(performedMove != null)
+                                lastMove = new Move(fromLoc, entry.getKey(), selectedElementName, gs, performedMove.action);
+                            else
+                                lastMove = new Move(fromLoc, entry.getKey(), selectedElementName, gs);
                             
                             synchronized(lastMoveReady)
                             {
@@ -207,6 +211,14 @@ public class GameWindow extends javax.swing.JFrame
             if (element.equals(move.element) && toLocation.equals(move.to)) 
                 return true;        
         return false;
+    }
+    
+    /** returns one from allowed moves, which fits to performed move by the user */
+    private Move getPerformedMove(String element, String toLocation) {
+        for (Move move: allowedMoves) 
+            if (element.equals(move.element) && toLocation.equals(move.to)) 
+                return move;        
+        return null;
     }
     
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed

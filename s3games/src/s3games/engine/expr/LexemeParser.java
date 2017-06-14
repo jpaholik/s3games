@@ -6,7 +6,7 @@ import java.util.*;
 class LexemeParser 
 {
     /** here are all the lexeme separators that indicate locations where the previous lexeme terminates */
-    private static final String allSeparators = "=!<=>+-*/% \t(),\"$";    
+    private static final String allSeparators = "=!<=>+-*/% \t(){}[],\"$";    
     
     /** resulting pre-lexemes in raw string format before they are recognized */
     private ArrayList<String> ln;
@@ -36,6 +36,7 @@ class LexemeParser
     private char closingBracketFor(String bracket)
     {
         if (bracket.charAt(0) == '(') return ')';
+        else if (bracket.charAt(0) == '[') return ']';
         return '}';
     }
 
@@ -122,7 +123,7 @@ class LexemeParser
                 acc.add(new NumberLexeme(Integer.parseInt(token)));
                 continue;
             }
-            if (token.equals("{") || token.equals("("))
+            if (token.equals("{") || token.equals("(") || token.equals("["))
             {                
                 int previousStackSize = stack.size();
                 stack.push(closingBracketFor(token));
@@ -132,10 +133,14 @@ class LexemeParser
                     ArrayList<Lexeme> elems1 = parseLn();
                     if (stack.size() > previousStackSize) 
                         stack.pop(); // ','
-                    elems.add(new ParenthesesLexeme(elems1));                    
+                    if(!elems1.isEmpty()) {
+                        elems.add(new ParenthesesLexeme(elems1));                    
+                    }
                 }
                 if (token.equals("{"))
                     acc.add(new SetLexeme(elems));
+                else if (token.equals("["))
+                    acc.add(new LazySetLexeme(elems));
                 else
                     acc.add(new ParenthesesLexeme(elems));
                 continue;
@@ -146,7 +151,7 @@ class LexemeParser
                 stack.push(',');
                 return acc;                
             }
-            if (token.equals("}") || token.equals(")"))
+            if (token.equals("}") || token.equals(")") || token.equals("]"))
             {
                 if (!stack.isEmpty()) 
                     if (stack.pop().equals(token.charAt(0)))                

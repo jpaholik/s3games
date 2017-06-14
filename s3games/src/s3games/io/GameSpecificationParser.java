@@ -329,6 +329,8 @@ public class GameSpecificationParser
             rule.from = Expr.parseExpr(stringify(val));
         else if (var.equals("to"))
             rule.to = Expr.parseExpr(stringify(val));
+        else if(var.equals("tolocations"))
+            rule.toLocations = Expr.parseExpr(val);
         else if (var.equals("condition"))
             rule.condition = Expr.parseExpr(val);
         else if (var.equals("awardplayer"))

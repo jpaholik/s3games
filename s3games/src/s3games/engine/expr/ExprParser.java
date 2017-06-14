@@ -109,12 +109,14 @@ public class ExprParser
             return new Expr_INTERNAL_FN(((InternalFunctionLexeme)lex).fn, new Expr[0]);
         if (lex instanceof SetLexeme)
             return new Expr_SET(new ArrayList<Expr>(Arrays.asList((parseList(((SetLexeme)lex).elems)))));
+        if (lex instanceof LazySetLexeme)
+            return new Expr_LAZYSET(new ArrayList<Expr>(Arrays.asList((parseList(((LazySetLexeme)lex).elems)))));
         if (lex instanceof VariableLexeme)
             return new Expr_VARIABLE(((VariableLexeme)lex).name);
         if (lex instanceof StringWithReferencesLexeme)
             return new Expr_STRING_WITH_VAR_REF(((StringWithReferencesLexeme)lex).strWithoutVars, 
                                                 ((StringWithReferencesLexeme)lex).vars);
-        if (lex instanceof ParenthesesLexeme)
+        if (lex instanceof ParenthesesLexeme) 
             return parseExpr(((ParenthesesLexeme)lex).lexs);
         throw new Exception("unexpected lexeme" + lex);     
     }

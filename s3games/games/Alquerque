@@ -2,6 +2,36 @@
 image=alquerque.png
 
 [REALBOARD ELEMENT TYPES]
+name=white
+state=1
+hueMin=71
+hueMax=192
+saturationMin=0.27
+saturationMax=1.0
+valueMin=0.09
+valueMax=0.9
+sizeMin=3000
+sizeMax=5000
+
+name=black
+hueMin=337
+hueMax=19
+saturationMin=0.44
+saturationMax=1.0
+valueMin=0.28
+valueMax=1.0
+sizeMin=3000
+sizeMax=5000
+
+name=switchingStone
+hueMin=337
+hueMax=19
+saturationMin=0.44
+saturationMax=1.0
+valueMin=0.28
+valueMax=1.0
+sizeMin=3000
+sizeMax=5000
 
 [ELEMENT TYPES]
 
@@ -51,257 +81,257 @@ point=1,1
 name=s(1,1)
 type=board
 point=73,57
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-8,27,0
 
 name=s(2,1)
 type=board
 point=192,57
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-4,27,0
 
 name=s(3,1)
 type=board
 point=306,57
-robot=10,20,30,40,50,10,20,30,40,50
+robot=0,27,0
 
 name=s(4,1)
 type=board
 point=425,57
-robot=10,20,30,40,50,10,20,30,40,50
+robot=4,27,0
 
 name=s(5,1)
 type=board
 point=542,57
-robot=10,20,30,40,50,10,20,30,40,50
+robot=8,27,0
 
 name=s(1,2)
 type=board
 point=73,168
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-8,23,0
 
 name=s(2,2)
 type=board
 point=192,168
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-4,23,0
 
 name=s(3,2)
 type=board
 point=306,168
-robot=10,20,30,40,50,10,20,30,40,50
+robot=0,23,0
 
 name=s(4,2)
 type=board
 point=425,168
-robot=10,20,30,40,50,10,20,30,40,50
+robot=4,23,0
 
 name=s(5,2)
 type=board
 point=542,168
-robot=10,20,30,40,50,10,20,30,40,50
+robot=8,23,0
 
 name=s(1,3)
 type=board
 point=73,281
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-8,19,0
 
 name=s(2,3)
 type=board
 point=192,281
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-4,19,0
 
 name=s(3,3)
 type=board
 point=306,281
-robot=10,20,30,40,50,10,20,30,40,50
+robot=0,19,0
 
 name=s(4,3)
 type=board
 point=425,281
-robot=10,20,30,40,50,10,20,30,40,50
+robot=4,19,0
 
 name=s(5,3)
 type=board
 point=542,281
-robot=10,20,30,40,50,10,20,30,40,50
+robot=8,19,0
 
 name=s(1,4)
 type=board
 point=73,394
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-8,15,0
 
 name=s(2,4)
 type=board
 point=192,394
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-4,15,0
 
 name=s(3,4)
 type=board
 point=306,394
-robot=10,20,30,40,50,10,20,30,40,50
+robot=0,15,0
 
 name=s(4,4)
 type=board
 point=425,394
-robot=10,20,30,40,50,10,20,30,40,50
+robot=4,15,0
 
 name=s(5,4)
 type=board
 point=542,394
-robot=10,20,30,40,50,10,20,30,40,50
+robot=8,15,0
 
 name=s(1,5)
 type=board
 point=73,506
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-8,11,0
 
 name=s(2,5)
 type=board
 point=192,506
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-4,11,0
 
 name=s(3,5)
 type=board
 point=306,506
-robot=10,20,30,40,50,10,20,30,40,50
+robot=0,11,0
 
 name=s(4,5)
 type=board
 point=425,506
-robot=10,20,30,40,50,10,20,30,40,50
+robot=4,11,0
 
 name=s(5,5)
 type=board
 point=542,506
-robot=10,20,30,40,50,10,20,30,40,50
+robot=8,11,0
 
 name=sb(1)
 type=stackb
 point=61,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(2)
 type=stackb
 point=124,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(3)
 type=stackb
 point=186,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(4)
 type=stackb
 point=249,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(5)
 type=stackb
 point=61,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(6)
 type=stackb
 point=124,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(7)
 type=stackb
 point=186,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(8)
 type=stackb
 point=249,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(9)
 type=stackb
 point=61,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(10)
 type=stackb
 point=124,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(11)
 type=stackb
 point=186,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sb(12)
 type=stackb
 point=249,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=-12,9,0
 
 name=sw(1)
 type=stackw
 point=375,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(2)
 type=stackw
 point=438,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(3)
 type=stackw
 point=500,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(4)
 type=stackw
 point=563,576
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(5)
 type=stackw
 point=375,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(6)
 type=stackw
 point=438,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(7)
 type=stackw
 point=500,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(8)
 type=stackw
 point=563,634
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(9)
 type=stackw
 point=375,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(10)
 type=stackw
 point=438,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(11)
 type=stackw
 point=500,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sw(12)
 type=stackw
 point=563,689
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sp(1)
 type=switchplace
 point=311,605
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,9,0
 
 name=sp(2)
 type=switchplace
 point=311,655
-robot=10,20,30,40,50,10,20,30,40,50
+robot=12,7,0
 
 [PLAYER NAMES]
 1=white
@@ -436,64 +466,24 @@ location=s(5,1)
 
 [EXPRESSIONS]
 
-CheckMove
-STATE(CONTENT("s($K,$L)")) == 1
-$DISTX = ABS($K - $M)
-$DISTY = ABS($L - $N)
-CheckShapePlus OR CheckDiagonals
-END
-
-CheckShapePlus
-($DISTX + $DISTY) == 1
-END
-
-CheckDiagonals
-(($K + $L) % 2)==0
-($DISTX == 1) AND ($DISTY == 1)
-END
-
-MiddleStoneOccupied
+MiddleStoneOccupied($X,$Y,$MX,$MY)
 NOT EMPTY("s($MX,$MY)")
 $MIDDLE=CONTENT("s($MX,$MY)")
-ELTYPE($MIDDLE) != ELTYPE(CONTENT("s($K,$L)"))
+ELTYPE($MIDDLE) != ELTYPE(CONTENT("s($X,$Y)"))
 END
 
-CheckJump
-STATE(CONTENT("s($K,$L)")) < 3
-$DISTX = ABS($K - $M)
-$DISTY = ABS($L - $N)
-$MX = ($K + $M) / 2
-$MY = ($L + $N) / 2
-CheckJumpP OR CheckJumpD
-END
-
-CheckJumpP
-($DISTX * $DISTY) == 0
-($DISTX + $DISTY) == 2
-MiddleStoneOccupied
-END
-
-CheckJumpD
-(($K + $L) % 2) == 0
-$DISTX == 2
-$DISTY == 2
-MiddleStoneOccupied
-END
-
-EraseJumpedB
+EraseJumpedB($MIDDLE,$MX,$MY)
 FORSOME($SB, 12, 1, MOVE($MIDDLE, "s($MX,$MY)", "sb($SB)"))
-EnableMoreJumps
 END
 
-EraseJumpedW
+EraseJumpedW($MIDDLE,$MX,$MY)
 FORSOME($SB, 12, 1, MOVE($MIDDLE, "s($MX,$MY)", "sw($SB)"))
-EnableMoreJumps
 END
 
-EnableMoreJumps
+EnableMoreJumps($EMJX,$EMJY)
 FORALL($EL, 1, 12, SETSTATE("b($EL)", 3))
 FORALL($EL, 1, 12, SETSTATE("w($EL)", 3))
-SETSTATE(CONTENT("s($M,$N)"), 2)
+SETSTATE(CONTENT("s($EMJX,$EMJY)"), 2)
 END
 
 CompleteMove
@@ -513,6 +503,17 @@ FORALL($EL, 1, 12, SETSTATE("w($EL)", 1))
 NEXTPLAYER
 END
 
+IsEmpty($CHECKX,$CHECKY)
+EMPTY("s($CHECKX,$CHECKY)")
+END
+
+IsValid($CHECKX,$CHECKY)
+$CHECKX > 0
+$CHECKX <= 5
+$CHECKY > 0
+$CHECKY <= 5
+END
+
 Draw
 $COUNTB = 0
 $COUNTW = 0
@@ -520,6 +521,121 @@ FORALL($X, 1, 5, FORALL($Y, 1, 5, (EMPTY("s($X,$Y)") OR (ELTYPE(CONTENT("s($X,$Y
 FORALL($X, 1, 5, FORALL($Y, 1, 5, (EMPTY("s($X,$Y)") OR (ELTYPE(CONTENT("s($X,$Y)")) == "black")) OR ($COUNTW = ($COUNTW + 1))))
 $COUNTB == 1
 $COUNTW == 1
+END
+
+CanGo($X,$Y,$CHECKX,$CHECKY)
+STATE(CONTENT("s($X,$Y)")) == 1
+IsEmpty($CHECKX,$CHECKY)
+IsValid($CHECKX,$CHECKY)
+END
+
+GetPossibleStepsStraight($X,$Y)
+$RET={}
+$CHECKX=$X
+$CHECKY=$Y-1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X+1
+$CHECKY=$Y
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X
+$CHECKY=$Y+1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X-1
+$CHECKY=$Y
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$RET
+END
+
+GetPossibleStepsDiag($X,$Y)
+$RET={}
+$CHECKX=$X+1
+$CHECKY=$Y-1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X+1
+$CHECKY=$Y+1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X-1
+$CHECKY=$Y+1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+$CHECKX=$X-1
+$CHECKY=$Y-1
+IF(CanGo($X,$Y,$CHECKX,$CHECKY), $RET = $RET UNION {["s($CHECKX,$CHECKY)",CompleteMove]}, true)
+IF((($X + $Y) % 2) == 0, true, $RET={})
+$RET
+END
+
+CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY)
+STATE(CONTENT("s($X,$Y)")) < 3
+IsEmpty($CHECKX,$CHECKY)
+MiddleStoneOccupied($X,$Y,$MX,$MY)
+IsValid($CHECKX,$CHECKY)
+END
+
+AfterJump($MX,$MY,$CHECKX,$CHECKY,$TYPE)
+$MIDDLE=CONTENT("s($MX,$MY)")
+IF($TYPE == "white", EraseJumpedW($MIDDLE,$MX,$MY), EraseJumpedB($MIDDLE,$MX,$MY))
+EnableMoreJumps($CHECKX,$CHECKY)
+END
+
+GetPossibleJumpsStraight($X,$Y)
+$RET={}
+$CHECKX=$X
+$CHECKY=$Y-2
+$MX=$X
+$MY=$Y-1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X+2
+$CHECKY=$Y
+$MX=$X+1
+$MY=$Y
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X
+$CHECKY=$Y+2
+$MX=$X
+$MY=$Y+1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X-2
+$CHECKY=$Y
+$MX=$X-1
+$MY=$Y
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$RET
+END
+
+GetPossibleJumpsDiag($X,$Y)
+$RET={}
+$CHECKX=$X+2
+$CHECKY=$Y-2
+$MX=$X+1
+$MY=$Y-1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X+2
+$CHECKY=$Y+2
+$MX=$X+1
+$MY=$Y+1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X-2
+$CHECKY=$Y+2
+$MX=$X-1
+$MY=$Y+1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+$CHECKX=$X-2
+$CHECKY=$Y-2
+$MX=$X-1
+$MY=$Y-1
+IF(CanJump($X,$Y,$CHECKX,$CHECKY,$MX,$MY), $RET = $RET UNION {["s($CHECKX,$CHECKY)", AfterJump($MX,$MY,$CHECKX,$CHECKY,ELTYPE(CONTENT("s($X,$Y)")))]}, true)
+IF((($X + $Y) % 2) == 0, true, $RET={})
+$RET
+END
+
+GetPossibleMoves($X,$Y) 
+$AFTERMOVE=false
+$POSSIBLEMOVES={}
+$POSSIBLEMOVES=$POSSIBLEMOVES UNION GetPossibleStepsStraight($X,$Y)
+$POSSIBLEMOVES=$POSSIBLEMOVES UNION GetPossibleStepsDiag($X,$Y)
+$POSSIBLEMOVES=$POSSIBLEMOVES UNION GetPossibleJumpsStraight($X,$Y)
+$POSSIBLEMOVES=$POSSIBLEMOVES UNION GetPossibleJumpsDiag($X,$Y)
+$POSSIBLEMOVES
 END
 
 [END OF GAME]
@@ -535,37 +651,21 @@ winner=0
 
 [GAME RULES]
 
-name=whitestep
+name=whitemove
 element=w($J)
 player=1
 from=s($K,$L)
 to=s($M,$N)
-condition=CheckMove
-followup=CompleteMove
+toLocations=GetPossibleMoves($K,$L)
+condition=true
 
-name=blackstep
+name=blackmove
 element=b($J)
 player=2
 from=s($K,$L)
 to=s($M,$N)
-condition=CheckMove
-followup=CompleteMove
-
-name=blackjump
-element=b($J)
-player=2
-from=s($K,$L)
-to=s($M,$N)
-condition=CheckJump
-followup=EraseJumpedB
-
-name=whitejump
-element=w($J)
-player=1
-from=s($K,$L)
-to=s($M,$N)
-condition=CheckJump
-followup=EraseJumpedW
+toLocations=GetPossibleMoves($K,$L)
+condition=true
 
 name=switchmoved
 element=switch

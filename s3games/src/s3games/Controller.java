@@ -49,6 +49,12 @@ public class Controller implements SwitchListener, Runnable
     
     /** each game has an ID so that it can recognize it is the one that is still being played */
     private int currentGameID;
+    
+    /** time when the game has started - used to count game duration */
+    private Date startTime;
+    
+    /** time when the game has ended - used to count game duration */
+    private Date endTime;
 
     /** constructs and shows main window and the minimum agenda */
     public Controller()
@@ -178,6 +184,8 @@ public class Controller implements SwitchListener, Runnable
         try { fw = new FileWriter(cw.getStatisticFileName()); }
         catch (IOException ex) { gw.showException(ex); return; }
         
+        startTime = new Date();
+        
         while ((numberOfRuns-- > 0) && (gw.isVisible())) 
         {
             cw.setNumberOfRunsToGo(numberOfRuns+1);
@@ -228,7 +236,13 @@ public class Controller implements SwitchListener, Runnable
                 try { notifier.wait(); } catch (InterruptedException ex) {}
             }
             cw.setNumberOfRunsToGo(0);
-            try { fw.append(Integer.toString(game.state.winner) + System.getProperty("line.separator")); fw.flush(); }
+            try { 
+                endTime = new Date();
+                long gameDuration = (endTime.getTime() - startTime.getTime());
+                fw.append(Integer.toString(game.state.winner) + System.getProperty("line.separator")); 
+                fw.append("Game duration: " + Long.toString((endTime.getTime() - startTime.getTime())) + "milisec" + System.getProperty("line.separator"));
+                fw.flush(); 
+            }
             catch (IOException ex) { gw.showException(ex); }
         }
       

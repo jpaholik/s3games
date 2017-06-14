@@ -25,10 +25,10 @@ public class RobotCmd
         switch (type) 
         {
             case version: cmdString = "VER"; break;
-            case grab: cmdString = "#5 P2000 T2000"; break;
+            case grab: cmdString = "#5 P1800 T2000"; break;
             case put: cmdString = "#5 P1000 T2000"; break;
             case query: cmdString = "Q"; break;
-            case init: buildPositionCommand(new double[] {0.0, 0.0, 0.0, 0.0, 0.0 }); break;
+            case init: buildPositionCommand(new double[] {0.0, 0.0, 0.0, 0.0, 85.0 }); break;
             case home: buildPositionCommand(new double[] {0.0, 53.0, -76.0, -101.0, 13.0 }); break;
         }
     }

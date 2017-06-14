@@ -186,6 +186,141 @@ class Expr_SET extends Expr
         else return false;
         return true;
     }
+    
+    @Override
+    /** return the expression set */
+    public ArrayList<Expr> getSet() throws Exception
+    {
+        
+        return set;
+    }
+}
+
+/** Represents a set of expressions */
+class Expr_LAZYSET extends Expr
+{
+    /** the actual set */
+    public ArrayList<Expr> set;
+
+    /** construct a set of expressions */
+    public Expr_LAZYSET(ArrayList<Expr> contents)
+    {
+        set = contents;
+    }
+
+    /** a set evaluates to a new set of expressions that are all evaluated to 
+     * their values, except expressions of type Expr_EXPRESSION_CALL; 
+     * duplicity is not checked here - perhaps it should be? */
+    @Override
+    public Expr eval(Context context) throws Exception
+    {
+        ArrayList<Expr> newContents = new ArrayList<Expr>();
+        for(Expr e: set) {
+            if(e instanceof Expr_EXPRESSION_CALL) {
+                Expr[] args = ((Expr_EXPRESSION_CALL)e).args;
+                Expr[] evalArgs = new Expr[args.length];
+                
+                for(int j = 0; j < args.length; j++) {
+                    evalArgs[j] = args[j].eval(context);
+                }
+                
+                newContents.add(new Expr_EXPRESSION_CALL(((Expr_EXPRESSION_CALL)e).exprName, evalArgs));                        
+            }
+            else {
+                newContents.add(e.eval(context));
+            }
+        }
+        return new Expr_LAZYSET(newContents);
+    }
+    
+    /** a set evaluates to a new set of expressions that are all evaluated to 
+     * their values, duplicity is not checked here - perhaps it should be? */
+    @Override
+    public Expr forceEval(Context context) throws Exception
+    {
+        ArrayList<Expr> newContents = new ArrayList<Expr>();
+        for(Expr e: set)
+            newContents.add(e.eval(context));
+        return new Expr_LAZYSET(newContents);
+    }
+
+    /** the set of expression is equal to another one if they contain expressions 
+     * that evaluate to the same values (recursively). Must have the same length,
+     * but duplicity is not checked - perhaps it should be? */
+    @Override
+    public boolean equals(Expr other, Context context) throws Exception
+    {
+        Expr elems[] = new Expr[set.size()];
+        for(int i = 0; i < set.size(); i++) {
+            Expr e = set.get(i);
+            
+            if(e instanceof Expr_EXPRESSION_CALL) {
+                Expr[] args = ((Expr_EXPRESSION_CALL)e).args;
+                Expr[] evalArgs = new Expr[args.length];
+                
+                for(int j = 0; j < args.length; j++) {
+                    evalArgs[j] = args[j].eval(context);
+                }
+                
+                elems[i] = new Expr_EXPRESSION_CALL(((Expr_EXPRESSION_CALL)e).exprName, evalArgs);
+            }
+            else {
+                elems[i] = set.get(i).eval(context);
+            }
+        }
+        
+        other = other.eval(context);
+        if (other instanceof Expr_LAZYSET)
+        {
+            if (elems.length != ((Expr_LAZYSET)other).set.size())
+                return false;
+            
+            for (int i = 0; i < set.size(); i++) {
+                Expr e1 = elems[i];
+                Expr e2 = ((Expr_LAZYSET) other).set.get(i);
+                
+                if(e1 instanceof Expr_EXPRESSION_CALL) {
+                    if(e2 instanceof Expr_EXPRESSION_CALL) {
+                        Expr_EXPRESSION_CALL exc1 = ((Expr_EXPRESSION_CALL) e1);
+                        Expr_EXPRESSION_CALL exc2 = ((Expr_EXPRESSION_CALL) e2);
+                        
+                        if(!exc1.exprName.equals(exc2.exprName)) 
+                            return false;
+                        
+                        if(exc1.args.length != exc2.args.length) 
+                            return false;
+                        
+                        for(int j = 0; j < exc1.args.length; j++) {
+                            if(exc1.args[j].equals(exc2.args[j], context))
+                                return false;
+                        }
+                    }
+                    else {
+                        return false;
+                    }
+                }
+                else {
+                    if(e2 instanceof Expr_EXPRESSION_CALL) {
+                        return false;
+                    }
+                    else {
+                        if (!elems[i].equals(((Expr_LAZYSET)other).set.get(i), context))
+                            return false;
+                    }
+                }
+                
+            }
+        }
+        else return false;
+        return true;
+    }
+    
+    @Override
+    /** return the expression set */
+    public ArrayList<Expr> getSet() throws Exception
+    {
+        return set;
+    }
 }
 
 /* Represents a variable expression, such as $X - the $ sign is not part 
